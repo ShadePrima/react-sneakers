@@ -3,6 +3,56 @@
 function App() {
   return (
     <div className="wrapper clear">
+      <div className="overlay">
+        <div className="drawer">
+          <h2 className="mb-20">Cart</h2>
+
+          <div className="items">
+            <div className="cartItem d-flex align-center mb-20">
+
+              <div style={{ backgroundImage: 'url(/img/sneakers/2.jpg)' }} className="cartItemImg">
+
+              </div>
+              <div className="mr-20 flex">
+                <p className="mb-5">Nike Air Max 270 Men’s Sneakers</p>
+                <b>65 $</b>
+              </div>
+              <img className="removeBtn" src="/img/button-remove.svg" alt="Remove" />
+            </div>
+
+            <div className="cartItem d-flex align-center">
+
+              <div style={{ backgroundImage: 'url(/img/sneakers/2.jpg)' }} className="cartItemImg">
+
+              </div>
+              <div className="mr-20 flex">
+                <p className="mb-5">Nike Air Max 270 Men’s Sneakers</p>
+                <b>65 $</b>
+              </div>
+              <img className="removeBtn" src="/img/button-remove.svg" alt="Remove" />
+            </div>
+          </div>
+
+          <div className="cartTotalBlock">
+            <ul>
+              <li>
+                <span>Total:</span>
+                <div></div>
+                <b>100$</b>
+              </li>
+              <li>
+                <span>Fax 5 %</span>
+                <div></div>
+                <b>95$ </b>
+              </li>
+            </ul>
+            <button>Сheckout</button>
+          </div>
+
+        </div>
+      </div>
+
+
       <header className="d-flex justify-between align-center p-40">
         <div className='d-flex align-center'>
           <img width={40} height={40} src="img/logo-header.png" alt="Logo" />
@@ -28,85 +78,88 @@ function App() {
 
       <div className="content p-40">
         <div className="d-flex aligh-center justify-between mb-40">
-        <h1 >All sneakers</h1>
-        <div className="search-block d-flex">
-        <img src="/img/search.svg" alt="Search" />
-        <input type="text" placeholder="Search ..." />
+          <h1 >All sneakers</h1>
+          <div className="search-block d-flex">
+            <img src="/img/search.svg" alt="Search" />
+            <input type="text" placeholder="Search ..." />
 
-        </div> 
-        </div>
-      <div className='d-flex'>
-      <div className="card">
-          <img
-          width={133}
-          height={115}
-          src="img/sneakers/sneakers-green.jpg" 
-          alt="sneakers-green" />
-          <h5>Men’s Sneakers Nike Blazer Mid Suede</h5>
-          <div className="d-flex justify-between">
-            <div className="d-flex flex-column align-center">
-              <span>Price:</span>
-              <b>250$</b>
-            </div>
-            <button className="button">
-              <img width={11} height={11} src="img/plus.svg" alt="Plus" />
-            </button>
           </div>
         </div>
-        <div className="card">
-          <img
-          width={133}
-          height={115}
-          src="img/sneakers/2.jpg" 
-          alt="sneakers-green" />
-          <h5>Men’s Sneakers Nike Blazer Mid Suede</h5>
-          <div className="d-flex justify-between">
-            <div className="d-flex flex-column align-center">
-              <span>Price:</span>
-              <b>250$</b>
+        <div className='d-flex'>
+          <div className="card">
+            <div className="favorite">
+              <img src="/img/heart-unlike.svg" alt="Unliked" />
             </div>
-            <button className="button">
-              <img width={11} height={11} src="img/plus.svg" alt="Plus" />
-            </button>
-          </div>
-        </div>
-        <div className="card">
-          <img
-          width={133}
-          height={115}
-          src="img/sneakers/3.jpg" 
-          alt="sneakers-green" />
-          <h5>Men’s Sneakers Nike Blazer Mid Suede</h5>
-          <div className="d-flex justify-between">
-            <div className="d-flex flex-column align-center">
-              <span>Price:</span>
-              <b>250$</b>
+            <img
+              width={133}
+              height={115}
+              src="img/sneakers/sneakers-green.jpg"
+              alt="sneakers-green" />
+            <h5>Men’s Sneakers Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between">
+              <div className="d-flex flex-column align-center">
+                <span>Price:</span>
+                <b>250$</b>
+              </div>
+              <button className="button">
+                <img width={11} height={11} src="img/plus.svg" alt="Plus" />
+              </button>
             </div>
-            <button className="button">
-              <img width={11} height={11} src="img/plus.svg" alt="Plus" />
-            </button>
           </div>
-        </div>
-        <div className="card">
-          <img
-          width={133}
-          height={115}
-          src="img/sneakers/4.jpg" 
-          alt="sneakers" />
-          <h5>Men’s Sneakers Nike Blazer Mid Suede</h5>
-          <div className="d-flex justify-between">
-            <div className="d-flex flex-column align-center">
-              <span>Price:</span>
-              <b>250$</b>
+          <div className="card">
+            <img
+              width={133}
+              height={115}
+              src="img/sneakers/2.jpg"
+              alt="sneakers-green" />
+            <h5>Men’s Sneakers Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between">
+              <div className="d-flex flex-column align-center">
+                <span>Price:</span>
+                <b>250$</b>
+              </div>
+              <button className="button">
+                <img width={11} height={11} src="img/plus.svg" alt="Plus" />
+              </button>
             </div>
-            <button className="button">
-              <img width={11} height={11} src="img/plus.svg" alt="Plus" />
-            </button>
           </div>
+          <div className="card">
+            <img
+              width={133}
+              height={115}
+              src="img/sneakers/3.jpg"
+              alt="sneakers-green" />
+            <h5>Men’s Sneakers Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between">
+              <div className="d-flex flex-column align-center">
+                <span>Price:</span>
+                <b>250$</b>
+              </div>
+              <button className="button">
+                <img width={11} height={11} src="img/plus.svg" alt="Plus" />
+              </button>
+            </div>
+          </div>
+          <div className="card">
+            <img
+              width={133}
+              height={115}
+              src="img/sneakers/4.jpg"
+              alt="sneakers" />
+            <h5>Men’s Sneakers Nike Blazer Mid Suede</h5>
+            <div className="d-flex justify-between">
+              <div className="d-flex flex-column align-center">
+                <span>Price:</span>
+                <b>250$</b>
+              </div>
+              <button className="button">
+                <img width={11} height={11} src="img/plus.svg" alt="Plus" />
+              </button>
+            </div>
+          </div>
+
         </div>
 
-      </div>
-       
       </div>
     </div>
   );
