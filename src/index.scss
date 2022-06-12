@@ -103,7 +103,7 @@ header {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color:rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
 
@@ -117,6 +117,13 @@ header {
   background: #FFFFFF;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
   padding: 30px;
+
+  .items {
+    flex: 1;
+    overflow: auto;
+    margin-bottom: 40px;
+  }
+
   h2 {
     margin: 0;
     font-size: 24px;
@@ -128,6 +135,11 @@ header {
 }
 
 .cartTotalBlock {
+  ul {
+    display: block;
+    margin-bottom: 40px !important;
+  }
+
   li {
     display: flex;
     align-items: flex-end;
@@ -138,12 +150,30 @@ header {
     flex: 1;
     height: 1px;
     border-bottom: 1px dashed #DFDFDF;
-    position: relative; 
+    position: relative;
     top: -4px;
-    margin: 0 7px; 
+    margin: 0 7px;
   }
 
-  button {
+  .greenButton {
+    position: relative;
+
+    &:hover {
+      img {
+        transform: translateX(5px);
+      }
+    }
+
+    img {
+      position: absolute;
+      right: 30px;
+      top: 20px;
+      transition: transform 0.15s ease-in-out;
+    }
+
+  }
+
+  .greenButton {
     width: 100%;
     height: 55px;
     background: #9DD458;
@@ -152,6 +182,18 @@ header {
     color: #fff;
     font-size: 16px;
     font-weight: 500px;
+    cursor: pointer;
+    transition: background 0.1s ease-in-out;
+
+
+    &:hover {
+      background: lighten(#9DD458, 5%);
+    }
+
+    &:active {
+      background: darken(#9DD458, 10%)
+    }
+
   }
 }
 
@@ -175,15 +217,18 @@ header {
     font-size: 14px;
     margin: 0;
   }
+
   b {
     font-size: 12px;
   }
-   .removeBtn {
+
+  .removeBtn {
     opacity: 0.5;
     transition: opacity 0.2s ease-in-out;
     cursor: pointer;
-    &:hover { 
+
+    &:hover {
       opacity: 1;
     }
-   }
+  }
 }
