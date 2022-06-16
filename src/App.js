@@ -13,8 +13,8 @@ const arr = [
 ]
 
 function App() {
+  const [ cardOpened, setCardOpened] = React.useState(false)
 
-  const [count, setCount] = React.useState(5)
 
 
 
@@ -22,9 +22,7 @@ function App() {
 
   return (
     <div className="wrapper clear"> 
-
-
-      <Drawer />
+      {cardOpened ? <Drawer /> : null}
       <Header />
 
 

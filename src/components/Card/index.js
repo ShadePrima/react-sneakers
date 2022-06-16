@@ -7,7 +7,10 @@ function Card(props) {
     const onClickPlus = () => {
         setIsAdded(!isAdded)
     }
-    console.log(isAdded)
+
+    React.useEffect(() => {
+         console.log('variable changed ')
+    }, [isAdded])
 
     return (
         <div className={styles.card}>

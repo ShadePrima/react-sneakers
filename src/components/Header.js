@@ -10,7 +10,7 @@ function Header() {
             </div>
 
             <ul className='d-flex '>
-                <li className='mr-30'>
+                <li className='mr-30 cu-p'>
                     <img width={18} height={18} src="img/card-header.svg" alt="Card" />
                     <span>110 $</span>
                 </li>
