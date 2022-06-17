@@ -47,7 +47,6 @@ fetch('https://62aafe60371180affbde9fc2.mockapi.io/items').then(res=> {
             />
           ))}
         </div>
-
       </div>
     </div>
   );
