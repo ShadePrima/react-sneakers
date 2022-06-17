@@ -35,7 +35,7 @@ fetch('https://62aafe60371180affbde9fc2.mockapi.io/items').then(res=> {
             <input type="text" placeholder="Search ..." />
           </div>
         </div>
-        <div className='d-flex flex-wrap'>
+        <div className='d-flex flex-wrap justify-center'>
 
           {items.map((obj) => (
             <Card
