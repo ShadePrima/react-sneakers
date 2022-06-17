@@ -28,7 +28,7 @@ fetch('https://62aafe60371180affbde9fc2.mockapi.io/items').then(res=> {
 
 
       <div className="content p-40">
-        <div className="d-flex aligh-center justify-between mb-40">
+        <div className="d-flex flex-wrap aligh-center justify-between mb-40">
           <h1 >All sneakers</h1>
           <div className="search-block d-flex">
             <img src="/img/search.svg" alt="Search" />
