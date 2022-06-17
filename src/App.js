@@ -11,21 +11,13 @@ function App() {
 
   React.useEffect(() => {
     fetch('https://62aafe60371180affbde9fc2.mockapi.io/items')
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(json => {
+      .then((json) => {
         setItems(json)
       });
-  }, [])
- 
-  fetch('https://62aafe60371180affbde9fc2.mockapi.io/items')
-    .then(res => {
-      return res.json();
-    })
-    .then(json => {
-      setItems(json)
-    });
+  }, []) 
 
 
   return (
