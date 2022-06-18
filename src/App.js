@@ -7,6 +7,8 @@ import Header from './components/Header';
 
 function App() {
   const [items, setItems] = React.useState([])
+  const [cartItems, setCartItems] = React.useState([])
+  const [searchValue, setSearchValue] = React.useState('')
   const [cartOpened, setCartOpened] = React.useState(false)
 
   React.useEffect(() => {
@@ -19,12 +21,19 @@ function App() {
       });
   }, []) 
 
+  const onAddToCart= (obj) => {
+    setCartItems(prev => [...prev, obj])
+  }
+
+  const onChangeSearchInput = (event) => {
+    setSearchValue(event.target.value)
+  }
 
   return (
     <div className="wrapper clear">
 
 
-      {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}
+      {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} />}
 
       <Header
         onClickCart={() => setCartOpened(true)}
@@ -33,21 +42,23 @@ function App() {
 
       <div className="content p-40">
         <div className="d-flex flex-wrap aligh-center justify-between mb-40">
-          <h1 >All sneakers</h1>
+          <h1 >{searchValue ? `Search for: ${searchValue}` : `All Sneakers`}</h1>
           <div className="search-block d-flex">
             <img src="/img/search.svg" alt="Search" />
-            <input type="text" placeholder="Search ..." />
+            {searchValue && <img onClick={() => setSearchValue('')} className="clear cu-p" src="/img/button-remove.svg" alt="Close" />}
+            <input onChange={onChangeSearchInput} value={searchValue} type="text" placeholder="Search ..." />
           </div>
         </div>
         <div className='d-flex flex-wrap justify-center'>
 
-          {items.map((obj) => (
+          {items.map((item, index) => (
             <Card
-              title={obj.title}
-              price={obj.price}
-              imageUrl={obj.imageUrl}
+              key={index} 
+              title={item.title}
+              price={item.price}
+              imageUrl={item.imageUrl}
               onFavorite={() => console.log('Add to bookmarks')}
-              onPlus={() => console.log('Сlicked plus')}
+              onPlus={(obj) => onAddToCart(obj)}
             />
           ))}
         </div>

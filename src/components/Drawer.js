@@ -1,37 +1,30 @@
-function Drawer(props) {
+function Drawer({ onClose, items = [] }) {
+    console.log(items)
     return (
 
         <div className="overlay">
             <div className="drawer">
                 <h2 className="d-flex justify-between mb-20">
                     Cart
-                    <img onClick={props.onClose} className="removeBtn cu-p" src="/img/button-remove.svg" alt="Remove" />
+                    <img onClick={onClose} className="removeBtn cu-p" src="/img/button-remove.svg" alt="Remove" />
                 </h2>
 
                 <div className="items">
-                    <div className="cartItem d-flex align-center mb-20">
+                    {items.map((obj) => (
+                        <div className="cartItem d-flex align-center">
 
-                        <div style={{ backgroundImage: 'url(/img/sneakers/2.jpg)' }} className="cartItemImg">
+                            <div style={{ backgroundImage: `url(${obj.imageUrl})` }} className="cartItemImg">
 
+                            </div>
+                            <div className="mr-20 flex">
+                                <p className="mb-5">{obj.title}</p>
+                                <b>{obj.price} $</b>
+                            </div>
+                            <img className="removeBtn" src="/img/button-remove.svg" alt="Remove" />
                         </div>
-                        <div className="mr-20 flex">
-                            <p className="mb-5">Nike Air Max 270 Men’s Sneakers</p>
-                            <b>65 $</b>
-                        </div>
-                        <img className="removeBtn" src="/img/button-remove.svg" alt="Remove" />
-                    </div>
+                    ))}
 
-                    <div className="cartItem d-flex align-center">
 
-                        <div style={{ backgroundImage: 'url(/img/sneakers/2.jpg)' }} className="cartItemImg">
-
-                        </div>
-                        <div className="mr-20 flex">
-                            <p className="mb-5">Nike Air Max 270 Men’s Sneakers</p>
-                            <b>65 $</b>
-                        </div>
-                        <img className="removeBtn" src="/img/button-remove.svg" alt="Remove" />
-                    </div>
                 </div>
 
                 <div className="cartTotalBlock">
