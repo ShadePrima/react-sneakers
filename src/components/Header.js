@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header(props) {
 
     return (
@@ -5,15 +7,20 @@ function Header(props) {
             <div className='d-flex align-center'>
                 <img width={40} height={40} src="img/logo-header.png" alt="Logo" />
                 <div>
-                    <h3 className='text-uppercase'>React Sneakers</h3>
-                    <p className='opacity-5'>Best sneakers store</p>
+                    <h3 className='text-uppercase'>React Store</h3>
+                    <p className='opacity-5'>My best store</p>
                 </div>
             </div>
 
             <ul className='d-flex '>
                 <li onClick={props.onClickCart} className='mr-30 cu-p'>
-                    <img width={18} height={18} src="img/card-header.svg" alt="Card" />
+                    <img width={18} height={18} src="img/card-header.svg" alt="Cart" />
                     <span>110 $</span>
+                </li>
+                <li className='mr-20 cu-p'>
+                    <Link to="/favorite">
+                        <img width={18} height={18} src="img/heart.svg" alt="Bookmark" />
+                    </Link>
                 </li>
                 <li>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

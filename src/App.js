@@ -3,17 +3,19 @@ import axios from 'axios';
 import Card from './components/Card';
 import Drawer from './components/Drawer';
 import Header from './components/Header';
+import { Route, Routes } from 'react-router-dom';
 
 
 
 function App() {
   const [items, setItems] = React.useState([])
   const [cartItems, setCartItems] = React.useState([])
+  const [favorites, setFavorites] = React.useState([])
   const [searchValue, setSearchValue] = React.useState('')
   const [cartOpened, setCartOpened] = React.useState(false)
 
   console.log(items)
-console.log(cartItems)
+  console.log(cartItems)
 
   React.useEffect(() => {
     axios.get('https://62aafe60371180affbde9fc2.mockapi.io/items').then(res => {
@@ -30,10 +32,13 @@ console.log(cartItems)
   }
 
   const onRemoveItem = (id) => {
-    console.log(id)
     axios.delete(`https://62aafe60371180affbde9fc2.mockapi.io/cart/${id}`)
     setCartItems((prev) => prev.filter(item => item.id !== id))
+  }
 
+  const onAddToFavorite = (obj) => {
+    axios.post('https://62aafe60371180affbde9fc2.mockapi.io/favorites', obj)
+    setFavorites((prev) => [...prev, obj])
   }
 
   const onChangeSearchInput = (event) => {
@@ -55,10 +60,15 @@ console.log(cartItems)
         onClickCart={() => setCartOpened(true)}
       />
 
+      <Routes>
+        {/* <Route path="/" element={<Home />} />  */}
+        <Route path="drawer" element={<Drawer />} />
+      </Routes>
+
 
       <div className="content p-40">
         <div className="d-flex flex-wrap aligh-center justify-between mb-40">
-          <h1 >{searchValue ? `Search for: ${searchValue}` : `All Sneakers`}</h1>
+          <h1 >{searchValue ? `Search for: ${searchValue}` : `All goods`}</h1>
           <div className="search-block d-flex">
             <img src="/img/search.svg" alt="Search" />
             {searchValue && <img onClick={() => setSearchValue('')} className="clear cu-p" src="/img/button-remove.svg" alt="Close" />}
@@ -76,7 +86,7 @@ console.log(cartItems)
                 title={item.title}
                 price={item.price}
                 imageUrl={item.imageUrl}
-                onFavorite={() => console.log('Add to bookmarks')}
+                onFavorite={(obj) => onAddToFavorite(obj)}
                 onPlus={(obj) => onAddToCart(obj)}
               />
             ))}
