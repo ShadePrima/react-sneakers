@@ -12,6 +12,9 @@ function App() {
   const [searchValue, setSearchValue] = React.useState('')
   const [cartOpened, setCartOpened] = React.useState(false)
 
+  console.log(items)
+console.log(cartItems)
+
   React.useEffect(() => {
     axios.get('https://62aafe60371180affbde9fc2.mockapi.io/items').then(res => {
       setItems(res.data)
@@ -28,11 +31,11 @@ function App() {
 
   const onRemoveItem = (id) => {
     console.log(id)
-    // axios.delete(`https://62aafe60371180affbde9fc2.mockapi.io/cart/${id}`)
+    axios.delete(`https://62aafe60371180affbde9fc2.mockapi.io/cart/${id}`)
     setCartItems((prev) => prev.filter(item => item.id !== id))
 
   }
- 
+
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value)
   }
@@ -69,6 +72,7 @@ function App() {
             .map((item, index) => (
               <Card
                 key={index}
+                id={item.id}
                 title={item.title}
                 price={item.price}
                 imageUrl={item.imageUrl}

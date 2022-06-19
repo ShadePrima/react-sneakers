@@ -58,8 +58,8 @@ function Drawer({ onClose, onRemove, items = [] }) {
                             <img className='mb-20' width='120px' heigth='120px' src="/img/empty-cart.jpg" alt="Empty" />
                             <h2>Cart empty</h2>
                             <p className='opaciti-6'>Add at least one pair of sneakers to order</p>
-                            <button className="greenButton">
-                                <img src="/img/arrow.svg" alt="Arrow" />
+                            <button onClick={onClose} className="greenButton">
+                                <img  src="/img/arrow.svg" alt="Arrow" />
                                 Сome back
                             </button>
                         </div>)
