@@ -4,13 +4,15 @@ function Header(props) {
 
     return (
         <header className="d-flex justify-between align-center p-40">
-            <div className='d-flex align-center'>
-                <img width={40} height={40} src="img/logo-header.png" alt="Logo" />
-                <div>
-                    <h3 className='text-uppercase'>React Store</h3>
-                    <p className='opacity-5'>My best store</p>
+            <Link to='/'>
+                <div className='d-flex align-center'>
+                    <img width={40} height={40} src="img/logo-header.png" alt="Logo" />
+                    <div>
+                        <h3 className='text-uppercase'>React Store</h3>
+                        <p className='opacity-5'>My best store</p>
+                    </div>
                 </div>
-            </div>
+            </Link>
 
             <ul className='d-flex '>
                 <li onClick={props.onClickCart} className='mr-30 cu-p'>
