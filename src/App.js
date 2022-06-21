@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Card from './components/Card';
 import Drawer from './components/Drawer';
 import Header from './components/Header';
 import { Route, Routes } from 'react-router-dom';
@@ -18,6 +17,7 @@ function App() {
 
 
 
+
   React.useEffect(() => {
     axios.get('https://62aafe60371180affbde9fc2.mockapi.io/items').then(res => {
       setItems(res.data)
@@ -30,9 +30,16 @@ function App() {
     })
   }, [])
 
+
+
   const onAddToCart = (obj) => {
-    axios.post('https://62aafe60371180affbde9fc2.mockapi.io/cart', obj)
-    setCartItems(prev => [...prev, obj])
+    if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
+      axios.delete(`https://62aafe60371180affbde9fc2.mockapi.io/cart/${obj.id}`)
+      setCartItems(prev => prev.filter(item => Number(item.id) !== Number(obj.id)))
+    } else {
+      axios.post('https://62aafe60371180affbde9fc2.mockapi.io/cart', obj)
+      setCartItems(prev => [...prev, obj])
+    }
   }
 
   const onRemoveItem = (id) => {
@@ -40,19 +47,23 @@ function App() {
     setCartItems((prev) => prev.filter(item => item.id !== id))
   }
 
-  const onAddToFavorite = (obj) => {
-    if (favorites.find(favObj => favObj.id === obj.id)) {
-      axios.delete(`https://62aafe60371180affbde9fc2.mockapi.io/favorites/${obj.id}`)
-      setFavorites((prev) => prev.filter((item) => item.id !== obj.id ))
-    } else {
-      axios.post('https://62aafe60371180affbde9fc2.mockapi.io/favorites', obj)
-      setFavorites((prev) => [...prev, obj])       
+  const onAddToFavorite = async (obj) => {
+    try {
+      if (favorites.find(favObj => favObj.id === obj.id)) {
+        axios.delete(`https://62aafe60371180affbde9fc2.mockapi.io/favorites/${obj.id}`)
+      } else {
+        const { data } = await axios.post('https://62aafe60371180affbde9fc2.mockapi.io/favorites', obj)
+        setFavorites((prev) => [...prev, data])
+      }
+    } catch (error) {
+      alert('Failed to add to favorites')
     }
   }
 
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value)
   }
+
 
   return (
     <div className="wrapper clear">
