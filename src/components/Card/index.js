@@ -3,12 +3,12 @@ import ContentLoader from "react-content-loader"
 import styles from './Card.module.scss'
 
 function Card({
-    onFavorite,
-    imageUrl,
-    title,
-    price,
-    onPlus,
     id,
+    title,
+    imageUrl,
+    price,
+    onFavorite,
+    onPlus,
     favorited = false,
     added = false,
     loading = false
