@@ -19,6 +19,8 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(true)
 
 
+
+
   React.useEffect(() => {
     async function fetchData() {
       setIsLoading(true)
@@ -53,6 +55,7 @@ function App() {
     try {
       if (favorites.find(favObj => Number(favObj.id) === Number(obj.id))) {
         axios.delete(`https://62aafe60371180affbde9fc2.mockapi.io/favorites/${obj.id}`)
+        setFavorites((prev) => prev.filter((item) => Number(item.id) !== Number(obj.id)))
       } else {
         const { data } = await axios.post('https://62aafe60371180affbde9fc2.mockapi.io/favorites', obj)
         setFavorites((prev) => [...prev, data])
@@ -66,9 +69,13 @@ function App() {
     setSearchValue(event.target.value)
   }
 
+  const isItemAdded = (id) => {
+    return cartItems.some((obj)=> Number(obj.id) === Number(id) )
+  }
+
 
   return (
-    <AppContext.Provider value={{items, cartItems, favorites }}>
+    <AppContext.Provider value={{items, cartItems, favorites, isItemAdded }}>
       <div className="wrapper clear">
 
 

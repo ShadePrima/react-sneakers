@@ -11,21 +11,19 @@ function Home({
     isLoading
 }) {
 
-
     const renderItems = () => {
-        const filtredItems = items.filter((item) => 
-        item.title.toLowerCase().includes(searchValue.toLowerCase()))
+        const filtredItems = items.filter((item) =>
+            item.title.toLowerCase().includes(searchValue.toLowerCase()))
 
         return (isLoading ? [...Array(8)] : filtredItems).map((item, index) => (
-                <Card
-                    key={index}
-                    onFavorite={(obj) => onAddToFavorite(obj)}
-                    onPlus={(obj) => onAddToCart(obj)}
-                    added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}
-                    loading={isLoading}
-                    {...item} 
-                />
-            ))
+            <Card
+                key={index}
+                onFavorite={(obj) => onAddToFavorite(obj)}
+                onPlus={(obj) => onAddToCart(obj)}
+                loading={isLoading}
+                {...item}
+            />
+        ))
     }
 
     return (
