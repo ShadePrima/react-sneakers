@@ -12,7 +12,9 @@ function Drawer({ onClose, onRemove, items = [] }) {
     const [isOrderComplete, setIsOrderComplete] = React.useState(false)
     const [isLoading, setIsLoading] = React.useState(false)
 
-    // console.log(orderId)
+    const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0)
+
+
 
     const onClickOrder = async () => {
         try {
@@ -77,12 +79,12 @@ function Drawer({ onClose, onRemove, items = [] }) {
                                     <li>
                                         <span>Total:</span>
                                         <div></div>
-                                        <b>100$</b>
+                                        <b>{totalPrice}$</b>
                                     </li>
                                     <li>
                                         <span>Fax 5 %</span>
                                         <div></div>
-                                        <b>95$ </b>
+                                        <b>{totalPrice / 100 * 5}$ </b>
                                     </li>
                                 </ul>
                                 <button disabled={isLoading} onClick={onClickOrder} className="greenButton">

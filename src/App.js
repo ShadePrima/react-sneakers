@@ -20,7 +20,6 @@ function App() {
 
 
 
-
   React.useEffect(() => {
     async function fetchData() {
       setIsLoading(true)
