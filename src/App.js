@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import Drawer from './components/Drawer';
+import Drawer from './components/Drawer/Drawer';
 import Header from './components/Header';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
 import AppContext from './context';
+import Orders from './pages/Orders';
 
 
 
@@ -22,15 +23,19 @@ function App() {
 
   React.useEffect(() => {
     async function fetchData() {
-      setIsLoading(true)
-      const cartResponse = await axios.get('https://62aafe60371180affbde9fc2.mockapi.io/cart')
-      const favoritesResponse = await axios.get('https://62aafe60371180affbde9fc2.mockapi.io/favorites')
-      const itemsResponse = await axios.get('https://62aafe60371180affbde9fc2.mockapi.io/items')
-      setIsLoading(false)
+      try {
+        const cartResponse = await axios.get('https://62aafe60371180affbde9fc2.mockapi.io/cart')
+        const favoritesResponse = await axios.get('https://62aafe60371180affbde9fc2.mockapi.io/favorites')
+        const itemsResponse = await axios.get('https://62aafe60371180affbde9fc2.mockapi.io/items')
 
-      setItems(itemsResponse.data)
-      setCartItems(cartResponse.data)
-      setFavorites(favoritesResponse.data)
+        setIsLoading(false)
+        setItems(itemsResponse.data)
+        setCartItems(cartResponse.data)
+        setFavorites(favoritesResponse.data)
+      } catch (error) {
+        alert('Data query error')
+      }
+
     }
     fetchData()
   }, [])
@@ -80,17 +85,20 @@ function App() {
       favorites,
       isItemAdded,
       setCartOpened,
-      setCartItems
+      setCartItems,
+      onAddToCart,
+      onAddToFavorite
     }}>
       <div className="wrapper clear">
-
-
-        {cartOpened && <Drawer
+        <Drawer
           items={cartItems}
           onClose={() => setCartOpened(false)}
           onRemove={onRemoveItem}
+          opened={cartOpened}
 
-        />}
+        />
+
+
 
         <Header
           onClickCart={() => setCartOpened(true)}
@@ -115,6 +123,10 @@ function App() {
               onAddToCart={onAddToCart}
               isLoading={isLoading}
             />} />
+
+          <Route path="/orders" element={
+            <Orders />
+          } />
         </Routes>
 
 

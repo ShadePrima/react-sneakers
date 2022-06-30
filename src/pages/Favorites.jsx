@@ -5,7 +5,7 @@ import AppContext from "../context"
 
 
 function Favorites({ onAddToFavorite }) {
-  const { favorites } = React.useContext(AppContext)
+  const { favorites, onAddToCart } = React.useContext(AppContext)
 
 
   return (
@@ -19,6 +19,7 @@ function Favorites({ onAddToFavorite }) {
           <Card
             key={index}
             favorited={true}
+            onPlus={(obj) => onAddToCart(obj)}
             onFavorite={onAddToFavorite}
             {...item}
           />
