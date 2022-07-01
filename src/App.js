@@ -9,8 +9,6 @@ import AppContext from './context';
 import Orders from './pages/Orders';
 
 
-
-
 function App() {
   const [items, setItems] = React.useState([])
   const [cartItems, setCartItems] = React.useState([])
@@ -101,7 +99,6 @@ function App() {
   const isItemAdded = (id) => {
     return cartItems.some((obj) => Number(obj.parentId) === Number(id))
   }
-
 
   return (
     <AppContext.Provider value={{
