@@ -50,8 +50,18 @@ function App() {
         setCartItems((prev) => prev.filter((item) => Number(item.parentId) !== Number(obj.id)))
         await axios.delete(`https://62aafe60371180affbde9fc2.mockapi.io/cart/${findItem.id}`)
       } else {
+        setCartItems((prev) => [...prev, obj ])
         const { data } = await axios.post('https://62aafe60371180affbde9fc2.mockapi.io/cart', obj)
-        setCartItems(prev => [...prev, data])
+        setCartItems((prev) => prev.map((item) => {
+          if (item.parentId === data.parentId) {
+             return {
+               ...item,
+               id: data.id
+             }
+          } else {
+            return item
+          }
+        }))
       }
     } catch (error) {
       alert('Error adding a card to the cart')
